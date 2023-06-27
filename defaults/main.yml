@@ -1,3 +1,14 @@
 ---
+flatpak_enable_flathub_repo: true
+flatpak_flathub_repo_url: "https://flathub.org/repo/flathub.flatpakrepo"
 
+flatpak_install_gnome: false
+flatpak_install_kde: false
+
+flatpak_packages: []
+flatpak_user: "{{ ansible_user_id }}"
+flatpak_user_packages: []
+
+flatpak_uninstall_packages: []
+flatpak_user_uninstall_packages: []
 ...

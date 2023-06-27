@@ -1,0 +1,8 @@
+---
+- name: Install flatpak
+  become: true
+  community.general.zypper:
+    name: flatpak
+    state: present
+
+...

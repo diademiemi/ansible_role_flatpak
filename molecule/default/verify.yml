@@ -5,8 +5,11 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Example assertion
-      ansible.builtin.assert:
-        that: true
+    - name: Try installing GNOME Gedit
+      become: true
+      community.general.flatpak:
+        name: org.gnome.gedit
+        state: present
+        method: system
 
 ...

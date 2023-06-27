@@ -1,0 +1,22 @@
+---
+- name: Install flatpak
+  become: true
+  ansible.builtin.apt:
+    name: flatpak
+    state: present
+
+- name: Install gnome software backend
+  become: true
+  ansible.builtin.apt:
+    name: gnome-software-plugin-flatpak
+    state: present
+  when: flatpak_install_gnome
+
+- name: Install plasma software backend
+  become: true
+  ansible.builtin.apt:
+    name: plasma-discover-backend-flatpak
+    state: present
+  when: flatpak_install_kde
+
+...

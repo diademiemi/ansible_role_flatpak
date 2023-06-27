@@ -2,8 +2,8 @@ galaxy_info:
   author: diademiemi
   namespace: diademiemi
   company: diademiemi
-  description: Ansible role to install and configure template
-  role_name: template
+  description: Ansible role to install and configure flatpak
+  role_name: flatpak
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -45,6 +45,12 @@ galaxy_info:
       versions:
         - buster
         - bullseye
+    - name: opensuse
+      versions:
+        - "15.4"
+    - name: opensuse
+      versions:
+        - "15.4"
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes

@@ -1,0 +1,44 @@
+---
+- name: Add Flathub repo
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    enabled: "{{ flatpak_enable_flathub_repo }}"
+    flatpakrepo_url: "{{ flatpak_flathub_repo_url }}"
+
+- name: Install Flatpak packages
+  become: true
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+    method: system
+  loop: "{{ flatpak_packages }}"
+
+- name: Install Flatpak packages for user
+  become: true
+  become_user: "{{ flatpak_user }}"
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+    method: user
+  loop: "{{ flatpak_user_packages }}"
+
+- name: Uninstall Flatpak packages
+  become: true
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: absent
+    method: system
+  loop: "{{ flatpak_uninstall_packages }}"
+
+- name: Uninstall Flatpak packages for user
+  become: true
+  become_user: "{{ flatpak_user }}"
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: absent
+    method: user
+  loop: "{{ flatpak_user_uninstall_packages }}"
+
+...
