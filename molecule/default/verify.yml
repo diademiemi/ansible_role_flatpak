@@ -5,11 +5,14 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Try installing GNOME Gedit
-      become: true
-      community.general.flatpak:
-        name: org.gnome.gedit
-        state: present
-        method: system
+    - name: Search for gedit
+      ansible.builtin.command: flatpak search gedit
+      register: flatpak_search_gedit
+      changed_when: false
+
+    - name: Fail if gedit is not found
+      ansible.builtin.fail:
+        msg: "gedit not found"
+      when: '"org.gnome.gedit" not in flatpak_search_gedit.stdout'
 
 ...
