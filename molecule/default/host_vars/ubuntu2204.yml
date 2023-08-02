@@ -1,0 +1,5 @@
+---
+flatpak_packages:
+  - "org.gnome.gedit"
+
+...
